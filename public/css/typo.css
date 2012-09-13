@@ -1,0 +1,56 @@
+@font-face {
+	font-family: Trebuchet MS;
+	src: url(../fonts/Trebuchet MS.ttf);
+}
+
+body {
+	font-family: Trebuchet MS, sans-serif;
+	color: #34302D;
+}
+
+
+h1, h2, h3 {
+	color: #31b3b3;	
+}
+
+.content a {
+	color: #31b3b3 !important;
+}
+
+header h2 {
+	margin-top: 8px;
+}
+
+.brown {
+	color: #34302D;
+}
+.green {
+	color: #86C543;
+}
+.cyan {
+	color: #044682;
+}
+.crimson {
+	color: #d60c5d;
+}
+.left {
+	float: left;
+	text-align: left;	
+}
+.right {
+	float: right;
+	text-align: right;
+}
+
+nav li a {
+	text-transform: uppercase;
+}
+
+li.active > a {
+    color: #34302D !important;
+    font-weight: bold;
+}
+
+.content {
+	color: black;
+}
