@@ -1,16 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.3
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 22, 2012 at 05:31 PM
--- Server version: 5.1.40
--- PHP Version: 5.3.3
+-- Host: 127.0.0.1
+-- Generation Time: Sep 13, 2012 at 02:29 PM
+-- Server version: 5.5.25
+-- PHP Version: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Database: `rixkohana`
+-- Database: `tecor`
 --
 
 -- --------------------------------------------------------
@@ -22,22 +29,43 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор статьи',
   `title` varchar(250) NOT NULL COMMENT 'Название статьи',
-  `alt_title` varchar(250) NOT NULL COMMENT 'Название в урл',
-  `author` varchar(100) NOT NULL COMMENT 'Автор статьи',
+  `url` varchar(250) NOT NULL DEFAULT 'art' COMMENT 'Название в урл',
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата публикации',
   `content_short` text NOT NULL COMMENT 'Текст статьи',
   `content_full` text NOT NULL COMMENT 'Полный текст статьи',
-  `static` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `static` (`static`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `articles`
+-- Table structure for table `catalog`
 --
 
-INSERT INTO `articles` (`id`, `title`, `alt_title`, `author`, `date`, `content_short`, `content_full`, `static`) VALUES
-(1, 'О фреймворках', 'about_framework', 'Петя Иванов', '2012-04-01 17:20:33', 'Фреймворк - в информационных\r\nсистемах структура программной системы; программное обеспечение, облегчающее разработку\r\nи объединение разных компонентов большого программного проекта. В отличие от библиотек,\r\nкоторые объединяют набор подпрограмм близкой функциональности, фреймворк содержит в себе\r\nбольшое количество разных по назначению библиотек.', 'Фреймворк - в информационных\r\nсистемах структура программной системы; программное обеспечение, облегчающее разработку\r\nи объединение разных компонентов большого программного проекта. В отличие от библиотек,\r\nкоторые объединяют набор подпрограмм близкой функциональности, фреймворк содержит в себе\r\nбольшое количество разных по назначению библиотек.', NULL),
-(2, 'Фреймворк Yii', 'Yii_framework', 'Вася Петров', '2012-04-01 17:20:33', 'Yii - это высокопроизводительный\r\nвеб-фреймворк, написанный на PHP, и реализующий парадигму MVC. Yii — аббревиатура, которая\r\nрасшифровывается как "Yes It Is!"', 'Yii - это высокопроизводительный\r\nвеб-фреймворк, написанный на PHP, и реализующий парадигму MVC. Yii — аббревиатура, которая\r\nрасшифровывается как "Yes It Is!"', NULL),
-(3, 'Фреймворк Symfony', 'Symfony_framework', 'Гриша Сидоров', '2012-04-01 17:23:29', 'Symfony — свободный каркас,\r\nнаписанный на PHP5, который использует паттерн Model-View-Controller.\r\nSymfony предлагает\r\nбыструю разработку и управление веб-приложениями, позволяет легко решать рутинные задачи\r\nвеб-программиста. Работает только с PHP 5. Имеет поддержку множества баз данных. Информация\r\nо реляционной базе данных в проекте должна быть связана с объектной моделью. Это можно\r\nсделать при помощи ORM инструмента. Symfony поставляется с двумя из них: Propel и Doctrine.', 'Symfony — свободный каркас,\r\nнаписанный на PHP5, который использует паттерн Model-View-Controller.\r\nSymfony предлагает\r\nбыструю разработку и управление веб-приложениями, позволяет легко решать рутинные задачи\r\nвеб-программиста. Работает только с PHP 5. Имеет поддержку множества баз данных. Информация\r\nо реляционной базе данных в проекте должна быть связана с объектной моделью. Это можно\r\nсделать при помощи ORM инструмента. Symfony поставляется с двумя из них: Propel и Doctrine.', NULL),
-(4, 'Контакты', '', '', '2012-04-22 15:41:03', '', 'Страница с контактами блаблабла и ещё раз бла', 'contacts');
+CREATE TABLE IF NOT EXISTS `catalog` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор статьи',
+  `title` varchar(250) NOT NULL COMMENT 'Название наименования',
+  `url` varchar(250) NOT NULL COMMENT 'Название в урл',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата публикации',
+  `content` text NOT NULL COMMENT 'Описание',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `static`
+--
+
+CREATE TABLE IF NOT EXISTS `static` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Идентификатор статьи',
+  `title` varchar(250) NOT NULL COMMENT 'Название страницы',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Дата публикации',
+  `content` text NOT NULL COMMENT 'Полный текст статьи',
+  `url` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
