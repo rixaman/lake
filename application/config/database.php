@@ -20,7 +20,7 @@ return array
 			 */
 			'hostname'   => 'localhost',
 			'database'   => 'tecor',
-			'username'   => 'vizh',
+			'username'   => 'root',
 			'password'   => '',
 			'persistent' => FALSE,
 		),
